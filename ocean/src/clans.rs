@@ -3,7 +3,7 @@ use std::collections::HashMap;
 
 #[derive(Debug)]
 pub struct ClanSystem {
-    clans: HashMap<String, Vec<String>>,
+    pub clans: HashMap<String, Vec<String>>,
 }
 
 impl ClanSystem {
@@ -27,6 +27,7 @@ impl ClanSystem {
         self.clans.len()
     }
     
+
     pub fn add_member(&mut self, clan_id: &str, crab_name: String) {
         self.clans.entry(clan_id.to_string())
             .or_insert_with(Vec::new)
@@ -49,9 +50,9 @@ impl ClanSystem {
             .map(|(id, _)| id.clone())
     }
 
-    pub fn add_member_to_clan(&mut self, clan_id: &str, crab_name: String) {
+    pub fn add_member_to_clan(&mut self, clan_id: &str, crab_name: &str) {
         self.clans.entry(clan_id.to_string())
             .or_insert_with(Vec::new)
-            .push(crab_name);
+            .push(crab_name.to_string());
     }
 }

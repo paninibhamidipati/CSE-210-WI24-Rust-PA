@@ -57,6 +57,17 @@ impl Ocean {
         //     // Add Clams
         // }
 
+        // Placeholder for other prey types, to be implemented later
+        for _ in 0..n_minnows {
+            reef.add_prey(Box::new(Minnow::new(25)));
+        }
+        for _ in 0..n_shrimp {
+            reef.add_prey(Box::new(Shrimp::new(1)));
+        }
+        for _ in 0..n_clams {
+            reef.add_prey(Box::new(Clam::new()));
+        }
+
         let reef_rc = Rc::new(RefCell::new(reef));
         self.reefs.push(Rc::clone(&reef_rc));
         reef_rc

@@ -87,7 +87,7 @@ impl Beach {
      * Adds a crab that lives on the beach as a member to the clan system for the given clan id and the crab's name.
      * A crab can only belong to one clan.
      */
-    pub fn add_member_to_clan(&mut self, clan_id: &str, crab_name: String) {
+    pub fn add_member_to_clan(&mut self, clan_id: &str, crab_name: &str) {
         self.clan_system.add_member2(clan_id, crab_name);
     }
 
@@ -133,10 +133,10 @@ impl Beach {
 }
 
 impl ClanSystem {
-    pub fn add_member2(&mut self, clan_id: &str, crab_name: String) {
+    pub fn add_member2(&mut self, clan_id: &str, crab_name: &str) {
         self.clans.entry(clan_id.to_string())
             .or_insert_with(Vec::new)
-            .push(crab_name);
+            .push(crab_name.to_string());
     }
 
     // Other existing methods...
